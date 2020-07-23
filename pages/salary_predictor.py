@@ -10,8 +10,8 @@ model = joblib.load('model.pkl')
 
 
 def write():
-    st.write('Salary Predictor')
-    st.markdown("## All fields are mandatory.")
+    st.title('Glassdoor Salary Predictor')
+    st.header('Predict the potential salary')
 
 
     st.subheader('Company Details: \n Check Glassdoor for exact values, if unsure')
