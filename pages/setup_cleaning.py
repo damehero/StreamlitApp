@@ -7,17 +7,15 @@ import folium
 
 
 def write():
-    
-    st.title(':computer: STEM Career Project Exploration')
-    st.header('Tech jobs and Salaries across the United States')
+
+    st.title('Setup & Cleaning')
+    st.header('Obtaining and Exploring the Data')
 
     st.markdown(
-        '''This is Web App is a modified expansion on an assignment orignially submitted as a final project for *COGS 108: Data Science in Practice*, 
-        taught remotely at UC San Diego in Spring 2020. The old repository and data can be viewed [here](https://github.com/damehero/COGS108_Repo/blob/master/FinalProject_group62.ipynb).'''
-    )
-    st.markdown(
-        'The goal of this page is to serve as an interactive and visual expansion to the original notebook.'
-    )
+        '''<p style='text-align: justify; '>While searching for public datasets that contained relevant job and salary info, 
+        we found it difficult to gather all the necessary pieces in one place. Many datasets were either too small, too old, or not comprehensive enough.
+        We decided that our best bet to find a large, consistent dataset was by collecting it on our own via webscraping.</p>''',
+        unsafe_allow_html=True)
 
     st.header('Setup')
     st.markdown('Relevant libraries for data cleaning and exploration.')
@@ -33,10 +31,11 @@ def write():
 
     st.header('Web Scraping Glassdoor')
     st.markdown(
-        '''Follwing this great [Medium article](https://towardsdatascience.com/selenium-tutorial-scraping-glassdoor-com-in-10-minutes-3d0915c6d905) 
-        on web scraping using *Selenium*, I was able to run a script to scrape 1000 unique job postings on Glassdoor.com. The author's original code 
-        needed a few tweaks to run as the format of some of the HTML elements on the Glassdoor site had changed.'''
-    )
+        '''<p style='text-align: justify; '>Follwing this great <a href="https://towardsdatascience.com/selenium-tutorial-scraping-glassdoor-com-in-10-minutes-3d0915c6d905">Medium article</a> 
+        on web scraping using <i>Selenium</i>, I was able to run a script to scrape 1000 unique job postings on Glassdoor.com. The author's original code 
+        needed a few tweaks to run as the format of some of the HTML elements on the Glassdoor site had changed.</p>''',
+        unsafe_allow_html=True)
+
     st.image(Image.open('images/scraper.png'),
              caption="'Software Engineering' query with no location specified",
              use_column_width=True)
@@ -57,13 +56,15 @@ df.head()
 
     st.header('Data Cleaning')
     st.write(
-        '''After scraping the data, I needed to clean it up so that it was usable for our model. I made the following changes and created the following variables:
-    - Identified the *Seniority* of each job based on title listing
-    - Parsed numeric data out of the *Salary Estimate* column
-        - Removed rows with missing salaries
-    - Made new columns for the Job *State* and *City*
-        - Reverse geocoded locations using [Google Maps Cloud API](https://cloud.google.com/maps-platform/maps) (retrieve Latitude/Longitude)'''
-    )
+        '''<p style='text-align: justify; '>After scraping the data, I needed to clean it up so that it was usable for our model. I made the following changes and created the following variables:
+    <ul><li>Identified the <i>Seniority</i> of each job based on title listing</li>
+    <li>Parsed numeric data out of the <i>Salary Estimate</i> column</li>
+    <li>Removed rows with missing salaries</li>
+    <li>Made new columns for the Job <i>State</i> and <i>City</i></li>
+    <li>Reverse geocoded locations using <a href="https://cloud.google.com/maps-platform/maps">Google Maps Cloud API</a> (retrieve Latitude/Longitude)</li>
+    </ul>
+    </p>''',
+    unsafe_allow_html=True)
 
     st.write('''Here are what the some of these steps looked like:''')
 
@@ -131,12 +132,13 @@ df.sample(3) # Sample 3 random postings''')
     st.altair_chart(
         alt.Chart(titles).mark_bar().encode(y='Position', x='Total'))
     st.markdown(
-        '''This bar chart shows the distribution of seniority in the job title listings. 
+        '''<p style='text-align: justify; '>This bar chart shows the distribution of seniority in the job title listings. 
     While the majority of titles do not specify seniority, it seems to make intuitive sense that there 
     is a greater demand for experienced software engineers as opposed to junior or new grad positions. 
     The lack of junior positions could also be explained by the notion that most of those listings would be 
     offered as internships rather than full time postions -and thus wouldn't be listed on a job-hunting 
-    website such as Glassdoor.''')
+    website such as Glassdoor.</p>''',
+    unsafe_allow_html=True)
 
     st.subheader('Parsing Salary Estimates')
     st.markdown(
@@ -160,15 +162,24 @@ df.sample(3) # Sample 3 random postings''')
 
     salary_ranges = df['Salary Estimate'].apply(salary_simplified)
 
+    titles = pd.DataFrame({
+        'Amount': [24, 30, 31, 31, 31, 30, 32, 31, 616, 31, 30, 31, 32],
+        'Average': [61.5, 62.5, 63.5, 73.0, 75.0, 80.0, 85.0, 88.0, 91.5, 100.0, 111.0, 112.0, 126.0]
+    })
+    st.markdown('**Bar chart of Average Salaries**')
+    st.altair_chart(
+        alt.Chart(titles).mark_bar().encode(y='Amount', x='Average'))
+
+
     st.subheader('Reverse Geocoding Locations')
-    st.markdown(
-        '''In order to visualize the locations of the job postings in the data frame, 
+    st.markdown('''<p style='text-align: justify; '>
+        In order to visualize the locations of the job postings in the data frame, 
         I needed a way to plot each posting on a map. However, the data did not come 
         with any geographic information about the locations of the postings. To solve 
         this problem I used Google Maps Cloud API to reverse geocode each city's location 
         and obtain it's lattitude and longitude coordinates. The following code cell assigns 
-        each job's Location listing with the corresponding geographic coordinates.'''
-    )
+        each job's Location listing with the corresponding geographic coordinates.</p>''',
+        unsafe_allow_html=True)
     st.code('''df['LAT'] = None
 df['LON'] = None
 
@@ -228,18 +239,15 @@ df_geo = df_geo.drop_duplicates(['City'], keep='first').drop(['City'], axis=1)
     st.markdown(bubble_map._repr_html_(),
                 unsafe_allow_html=True)  # Allows Folium map to be displayed
     st.markdown('')
-    st.markdown(
-        '''This Bubble Map of the United States plots each job listing's location 
+    st.markdown('''<p style='text-align: justify; '>
+    This Bubble Map of the United States plots each job listing's location 
     where the radius of the bubble is a factor corresponding to the number of postings at 
     each location. From the map we can see that there are a large number of postings in 
     Salt Lake City, Chicago, Burlington, New York, San Jose, and Seattle. The concentration 
     of multiple circles in the Bay Area and East coast reflect a high volume of postings and 
-    signify these areas as "Tech Hubs."''')
+    signify these areas as "Tech Hubs."</p>''',
+    unsafe_allow_html=True)
 
     st.info(
         ''' by: [Daman Heer](https://damehero.github.io/) | source: [GitHub](https://github.com/damehero/StreamlitApp) '''
     )
-
-    st.markdown("<h1 style='text-align: center; color: red;'>Thank you!</h1>",
-                unsafe_allow_html=True)
-    st.latex('a^2 + b^2 = c^2')

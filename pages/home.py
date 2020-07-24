@@ -22,25 +22,28 @@ def write():
 
     st.header('Background & Prior Research')
     st.markdown(
-        '''<p style='text-align: justify; '>As college students on track to graduation, we wanted to understand if acquiring a job with a high salary would require one to relocate to a different state. 
-        Although we currently know that there are certain regions that are known to be ideal for certain career paths (i.e. Silicon Valley for majors related to technology), 
-        we wanted to an in-depth analysis about lesser-known locations that may ideal for STEM majors. After doing some research on other projects and articles that analyzed the correlation 
+        '''<p style='text-align: justify; '>As college students on track to graduation, we wanted to understand whether or not acquiring a job with a high salary would require one to relocate to a different state. 
+        Although we currently know that there are certain regions that are known to be ideal for various career paths (i.e. Silicon Valley for majors related to technology), 
+        we wanted to an in-depth analysis about lesser-known locations that may ideal for STEM majors.</p> 
+        <p style='text-align: justify; '>As Cognitive Science students looking to work in tech, we were namely curious about roles in <b>Software Engineering</b>, <b>Data Science</b>, and <b>Product Design</b>.</p> 
+        <p style='text-align: justify; '>After doing some research on other projects and articles that analyzed the correlation 
         between salaries and the value of having a college degree, we decided to do an investigation on salaries and their variation in different geographical locations. Companies have made general calculators (i.e. <a href="https://www.payscale.com/">PayScale.com</a>), 
         which make salary estimates based on factors such as the alma matter or university degree, but we wanted to go the extra mile 
         and further investigate the cost of living in certain regions and how it may pay off.</p>''',
         unsafe_allow_html=True)
     st.markdown(''' 
-        <p style='text-align: justify; '>The formulation of our research questions led us nto the discussion of where the next Tech Hub might emerge from. As we know today, Silicon Valley has widely been considered the most popular center for innovation and tech startups. 
-        In fact, most unicorn companies (privately-held startups valued at over $1 billion) all originate from the Silicon Valley. We pondered as to why entrepreneurs and technologists are drawn to settle at this location when 
-        looking for a career? Why did leading companies such as Google, Apple, Facebook all start in Silicon Valley? Were those companies suplemented by college students who went to colleges proximal to Silicon 
-        Valley (i.e. Stanford and UC Berkeley)? We wanted to find out if any of these factors actually contributed to the success and image of Silicon Valley and how we could have insight as to where the next 
-        Silicon Valley might come from. From ‘builtin.com’, it shows that San Francisco has only 4,346 tech companies and is the third most expensive city to live in, while New York City has 5,196 tech companies 
+        <p style='text-align: justify; '>The formulation of our research questions led us into the discussion of where the next Tech Hub might emerge from. As we know today, Silicon Valley is widely considered to be the main center for innovation and tech startups. 
+        In fact, most unicorn companies (privately-held startups valued at over $1 billion) all originate from the Silicon Valley. Why are so many entrepreneurs and technologists drawn to settle here?
+        Why did leading companies such as Google, Apple, Facebook all start in Silicon Valley? Were those companies suplemented by college students who went to large and proximal research universities
+        (i.e. Stanford and UC Berkeley)?</p> 
+        <p style='text-align: justify; '>We wanted to find out if any of these factors actually contributed to the success and image of Silicon Valley and how might gain insight as to where the next 
+        Silicon Valley may come from. From <a href="https://builtin.com/tech-hubs">Builtin.com</a> we learned that San Francisco only has 4,346 tech companies and is the third most expensive city in the U.S. to live in, while New York City has 5,196 tech companies 
         and is the second most expensive city to live in. Garnering examples like these spark insight and test our assumptions about these locations.</p>''',
-        unsafe_allow_html=True)
+                unsafe_allow_html=True)
 
     st.header('Hypothesis')
     st.markdown(
-        '''<p style='text-align: justify; '>We predict that we are going to see a positive correlation between certain states and salaries corresponding to respective majors, and that living in an optimal certain region will increase likelihood of earning a higher salary based on career/college major.</p>''',
+        '''<p style='text-align: justify; '>We predict that we are going to observe a <b>positive correlation</b> between certain states and salaries <b>based on our selected majors</b>, and that there are <b>optimal regions</b> that will increase the likelihood of earning a higher salary based on career/college major.</p>''',
         unsafe_allow_html=True)
 
     st.header('Data')
