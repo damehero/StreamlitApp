@@ -154,7 +154,6 @@ def write():
 
     st.write('You selected:', options)
 
-    st.image(['mewtwo.png', 'arceus.png'])
 
 
 
