@@ -12,7 +12,7 @@ model = joblib.load('model.pkl')
 def write():
     st.title('Glassdoor Salary Predictor')
     st.header('Predict the potential salary')
-
+    st.markdown('''Uses a Random Forest Regressor from Sci-Kit Learn.''')
 
     st.subheader('Company Details: \n Check Glassdoor for exact values, if unsure')
 
