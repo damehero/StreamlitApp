@@ -3,13 +3,15 @@ import pages.home
 import pages.setup_cleaning
 import pages.salary_predictor
 import pages.visualizations
+import pages.results
 import shared.components
 
 PAGES = {
     'Home' : pages.home,
     'Setup & Cleaning' : pages.setup_cleaning,
     'Data Visualizations' : pages.visualizations,
-    'Salary Predictor' : pages.salary_predictor
+    'Salary Predictor' : pages.salary_predictor,
+    'Results' : pages.results
 }
 
 def main():
