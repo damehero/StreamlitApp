@@ -45,18 +45,16 @@ def write():
 
     st.header('Data')
     st.markdown('''
-    <p style='text-align: justify; '> An ideal dataset would cover all the discrepancies we’re seeking to address with this research question. Since our question is about the city mostly, we need geographic-specific data 
-    that will tell us the average pay in a city for a given career and the ability to address the fact that living costs heavily factor into the true value of the salary in any given place since the living costs can shift 
-    drastically from city to city. Additionally this data would have to be collected on a national level and consistent regardless of location. In order to do this, we have to find a national provider of data that rates 
+    <p style='text-align: justify; '> An ideal dataset would cover all the specifics we’re seeking to address in our research questions. Since our questions are mostly geo-centric, we will need geographic-specific data 
+    that can tell us about the average pay in a city for a given career as well as a label with living costs in that area.
+    Additionally, this data would have to be collected on a national level and be consistent regardless of location. In order to do this, we need to find a national provider of data that rates 
     all cities by the same metric such as a tourism or housing service. Also data about the average pay of a career nationally would help us place greater weight on whether the salary increase is worth it regardless of 
     the living costs. Since we are looking at several different majors which have to be treated independently, we will need a great number of observations for each given major/career path with little overlap allowed for 
-    similar fields that connotes similar pay (i.e. anything careers in similar sectors Graphic Designer  UI designer). To summarize, the data we collect should be able to be matched by city or state, while allowing us to 
+    similar fields that connotes similar pay (i.e. anything careers in similar sectors Graphic Designer or UI designer). To summarize, the data we collect should be able to be matched by city or state, while allowing us to 
     make a correlation between the growth rate of certain areas to the relationship between geo-specific salary and living costs in order to establish a ranking system of best places to go with a given major/career path.</p>''',
                 unsafe_allow_html=True)
     st.markdown(''' 
         1. Software Engineering, Data Science, and Product Design job postings in the US on [GlassDoor.com](https://www.glassdoor.com/index.htm)''')
     st.markdown('''
         2. Cost of Living Index from [BestPlaces.com](https://www.bestplaces.net/cost-of-living/)''')
-    st.markdown(
-        '''The overall living cost indices and miscellaneous cost indices based on the top 40 cities from the Glassdoor data with 5 or more job postings.'''
-    )
+

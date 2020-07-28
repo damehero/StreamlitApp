@@ -163,12 +163,16 @@ df.sample(3) # Sample 3 random postings''')
     salary_ranges = df['Salary Estimate'].apply(salary_simplified)
 
     titles = pd.DataFrame({
-        'Amount': [24, 30, 31, 31, 31, 30, 32, 31, 616, 31, 30, 31, 32],
+        'Count': [24, 30, 31, 31, 31, 30, 32, 31, 616, 31, 30, 31, 32],
         'Average': [61.5, 62.5, 63.5, 73.0, 75.0, 80.0, 85.0, 88.0, 91.5, 100.0, 111.0, 112.0, 126.0]
     })
     st.markdown('**Bar chart of Average Salaries**')
     st.altair_chart(
-        alt.Chart(titles).mark_bar().encode(y='Amount', x='Average'))
+        alt.Chart(titles).mark_bar().encode(y='Count', x='Average'))
+    st.markdown(
+        '''<p style='text-align: justify; '>As we can see from this bar chart, the overwhelming majority of salary averages are at $91.5k with
+        lows in the mid $60k's and a high in the mid $120k's. </p>''',
+        unsafe_allow_html=True)
 
 
     st.subheader('Reverse Geocoding Locations')
