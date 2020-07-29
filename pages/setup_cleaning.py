@@ -252,6 +252,4 @@ df_geo = df_geo.drop_duplicates(['City'], keep='first').drop(['City'], axis=1)
     signify these areas as "Tech Hubs."</p>''',
     unsafe_allow_html=True)
 
-    st.info(
-        ''' by: [Daman Heer](https://damehero.github.io/) | source: [GitHub](https://github.com/damehero/StreamlitApp) '''
-    )
+    
