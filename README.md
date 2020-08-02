@@ -6,13 +6,13 @@
 * Webscraped over 1000 unique job postings from [Glassdoor.com](https://www.glassdoor.com/sitedirectory/title-jobs.htm) using Selenium and Chromedriver
 * Feature engineered from the text of each job description to quantify the value companies place on skills such as Python, Java, AWS, Figma and many other skills.
 * Optimized a Random Forest Regressor from scikit-learn to create a tool that estimates software engineering, data science, and product design salaries (MAE ~ $7K)
-* Built a web application for users to input data and receive an estimate, using Streamlit and Heroku.
+* Built and depolyed a web application for users to input parameters and receive a salary estimate, using Streamlit and Heroku.
  
 
 ## Code and Resources Used 
 **Python Version:** 3.7  
 **Packages:** pandas, numpy, sklearn, matplotlib, seaborn, altair, selenium, streamlit, pickle  
-**For Web Framework Requirements:**  ```pip install -r requirements.txt```  
+**For Replicating Libraries:**  ```pip install -r requirements.txt```  
 **Scraper Github:** https://github.com/arapfaik/scraping-glassdoor-selenium  
 **Scraper Article:** https://towardsdatascience.com/selenium-tutorial-scraping-glassdoor-com-in-10-minutes-3d0915c6d905  
 
@@ -50,28 +50,24 @@ After scraping the data, I needed to clean it up so that it was usable for the m
     * Excel 
 *	Column for simplified job title and Seniority 
 
-## EDA
-I looked at the distributions of the data and the value counts for the various categorical variables. Below are a few highlights from the pivot tables. 
-
-![alt text](https://github.com/PlayingNumbers/ds_salary_proj/blob/master/salary_by_job_title.PNG "Salary by Position")
-![alt text](https://github.com/PlayingNumbers/ds_salary_proj/blob/master/positions_by_state.png "Job Opportunities by State")
-![alt text](https://github.com/PlayingNumbers/ds_salary_proj/blob/master/correlation_visual.png "Correlations")
-
 ## Model Building & Performance
 
 First, I transformed the categorical variables into dummy variables. I also split the data into train and tests sets with a test size of 20%.   
 
-I tried three different models and evaluated them using Mean Absolute Error. I chose MAE because it is relatively easy to interpret and outliers aren’t particularly bad in for this type of model.   
+I tried three different models and evaluated them using Mean Absolute Error. MAE is an ideal metric of evaluation because it is relatively easy to interpret and there aren't any severe outliers in this model.   
 
-I tried three different models:
-*	**Multiple Linear Regression** – Baseline for the model
-*	**Lasso Regression** – Because of the sparse data from the many categorical variables, I thought a normalized regression like lasso would be effective.
-*	**Random Forest** – Again, with the sparsity associated with the data, I thought that this would be a good fit. 
+The three different models:
+*	**Multiple Linear Regression**
+*	**Lasso Regression**
+*	**Random Forest**
 
 The Random Forest model was the best suited approach for the test and validation sets. 
 *	**Random Forest** : MAE = 7.41
 
 ## Productionization 
-In this step, I built a Streamlit web app to display the notebook with data visualizations, the salary predictor, and the results of the project.
+In this step, I built a Streamlit web app to display the notebook with data visualizations, the salary predictor, and the results of the project. You can view it [here](https://stem-career-project.herokuapp.com/). If it goes down for whatever reason, here is what the interface looked like:
+
+(/home.png)
+
 
 
