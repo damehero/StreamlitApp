@@ -49,12 +49,18 @@ def write():
     that can tell us about the average pay in a city for a given career as well as a label with living costs in that area.
     Additionally, this data would have to be collected on a national level and be consistent regardless of location. In order to do this, we need to find a national provider of data that rates 
     all cities by the same metric such as a tourism or housing service. Also data about the average pay of a career nationally would help us place greater weight on whether the salary increase is worth it regardless of 
-    the living costs. Since we are looking at several different majors which have to be treated independently, we will need a great number of observations for each given major/career path with little overlap allowed for 
-    similar fields that connotes similar pay (i.e. anything careers in similar sectors Graphic Designer or UI designer). To summarize, the data we collect should be able to be matched by city or state, while allowing us to 
-    make a correlation between the growth rate of certain areas to the relationship between geo-specific salary and living costs in order to establish a ranking system of best places to go with a given major/career path.</p>''',
+    the living costs. Ultimately, we collected our data from 2 primary sources:</p>''',
                 unsafe_allow_html=True)
-    st.markdown(''' 
-        1. Software Engineering, Data Science, and Product Design job postings in the US on [GlassDoor.com](https://www.glassdoor.com/index.htm)''')
-    st.markdown('''
-        2. Cost of Living Index from [BestPlaces.com](https://www.bestplaces.net/cost-of-living/)''')
 
+    st.markdown(''' 
+        1. Software Engineering, Data Science, and Product Design job postings in the US on [GlassDoor.com](https://www.glassdoor.com/index.htm)'''
+                )
+    st.markdown('''
+        2. Cost of Living Index from [BestPlaces.com](https://www.bestplaces.net/cost-of-living/)'''
+                )
+
+    st.markdown('''
+    <p style='text-align: justify; '>Since we are looking at several different majors which have to be treated independently, we will need a great number of observations for each given major/career path with little overlap allowed for 
+    similar fields that connotes similar pay (i.e. anything careers in similar sectors Graphic Designer or UI designer). To summarize, the data we collect should be able to be matched by city or state, while allowing us to 
+    make a correlation between geo-specific salary and living costs in order to establish a ranking system of best places to go with a given major/career path.</p>''',
+                unsafe_allow_html=True)

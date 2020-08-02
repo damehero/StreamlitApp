@@ -182,6 +182,12 @@ def write():
         chart.set_yticklabels(chart.get_yticklabels())
         st.pyplot(bbox_inches="tight")
 
+        st.markdown(
+            ''' <p style='text-align: justify; '>From our job data, a total of 42/50 states are represented in the listings. 
+            An interesting feature of this bar chart is that Virginia had more total listings than California, indicating that 
+            there is a high demand for software engineers currently unfulfilled.</p>''',
+            unsafe_allow_html=True)
+
         st.markdown('**Industry**')
         cat_num = df_cat['Industry'].value_counts()
         st.write("Chart for Industry: unique =", (len(cat_num)))
@@ -189,6 +195,15 @@ def write():
         chart = sns.barplot(y=cat_num.index, x=cat_num)
         chart.set_yticklabels(chart.get_yticklabels())
         st.pyplot(bbox_inches="tight")
+
+        st.markdown(
+            ''' <p style='text-align: justify; '>This next bar chart shows the dispersion of jobs across various types of industries. 
+            Again, it comes as no surprise that a large portion of software engineering jobs are listed in industries related to tech 
+            such as Computer Hardware, Enterprise Software, Internet, and IT Services. Something that was surprising, however, is how 
+            wide the spread of industries is as it spans some uncommon domains for traditional software engieering such as Religious 
+            Organizations, Pharmaceuticals, and Manufacturing.
+            </p>''',
+            unsafe_allow_html=True)
 
         st.markdown('**Sector**')
         cat_num = df_cat['Sector'].value_counts()
@@ -198,6 +213,12 @@ def write():
         chart.set_yticklabels(chart.get_yticklabels())
         st.pyplot(bbox_inches="tight")
 
+        st.markdown(
+            ''' <p style='text-align: justify; '>Sector, different from Industry, describes a larger segment of the economy. 
+            Overwhelmingly, the majority of software engineering jobs fall into the cateogry of Information Technology.
+            </p>''',
+            unsafe_allow_html=True)
+
         st.markdown('**Company Size**')
         cat_num = df_cat['Size'].value_counts()
         st.write("Chart for Company Size: unique =", (len(cat_num)))
@@ -206,6 +227,13 @@ def write():
         chart.set_yticklabels(chart.get_yticklabels())
         st.pyplot(bbox_inches="tight")
 
+        st.markdown(
+            ''' <p style='text-align: justify; '>This bar chart shows the spread of company sizes within our data. 
+            We can see that the majority of companies with open listings fall into the mid-size range with between 
+            51 to 200 and 201 to 500 employees.
+            </p>''',
+            unsafe_allow_html=True)
+
         st.markdown('**Type of Ownership**')
         cat_num = df_cat['Type of ownership'].value_counts()
         st.write("Chart for Ownership Type: unique =", (len(cat_num)))
@@ -213,6 +241,12 @@ def write():
         chart = sns.barplot(y=cat_num.index, x=cat_num)
         chart.set_yticklabels(chart.get_yticklabels())
         st.pyplot(bbox_inches="tight")
+
+        st.markdown(
+            ''' <p style='text-align: justify; '>This bar chart reveals the type of ownership amongst the companies in the job data. 
+            Unsurprisingly, the majority of companies are private, followed by a few public companies and nonprofits.
+            </p>''',
+            unsafe_allow_html=True)
 
     elif option == 'Data Science':
 
@@ -238,6 +272,12 @@ def write():
         chart.set_yticklabels(chart.get_yticklabels())
         st.pyplot(bbox_inches="tight")
 
+        st.markdown(
+            ''' <p style='text-align: justify; '>There are just 35 unique states represented in the Data Science job postings, 
+            the smallest variety of all 3 jobs types (just 1 lower than Design). The majority of jobs are located on the coasts.
+            </p>''',
+            unsafe_allow_html=True)
+
         st.markdown('**Industry**')
         cat_num = df_cat['Industry'].value_counts()
         st.write("Chart for Industry: unique =", (len(cat_num)))
@@ -245,6 +285,14 @@ def write():
         chart = sns.barplot(y=cat_num.index, x=cat_num)
         chart.set_yticklabels(chart.get_yticklabels())
         st.pyplot(bbox_inches="tight")
+
+        st.markdown(
+            ''' <p style='text-align: justify; '>An interesting and unexpected feature of the Data Science data can be seen in this bar chart. 
+            The main industry for Data Science in the US appears to be in Biotech and Pharmaceuticals. Given the boom in bioengineering technologies 
+            over the last two decades, this seems to make sense although I certainly didn't expect this industry to top the list. Having specific 
+            domain knowledge in the biological sciences could greatly increase the chances of landing a job in Data Science.
+            </p>''',
+            unsafe_allow_html=True)
 
         st.markdown('**Sector**')
         cat_num = df_cat['Sector'].value_counts()
@@ -254,6 +302,11 @@ def write():
         chart.set_yticklabels(chart.get_yticklabels())
         st.pyplot(bbox_inches="tight")
 
+        st.markdown(
+            ''' <p style='text-align: justify; '>While the main industry for Data Science was in Biotech, the combination of IT Services and Computer Hardware/Software industries are enough to top the list of sectors.
+            </p>''',
+            unsafe_allow_html=True)
+
         st.markdown('**Company Size**')
         cat_num = df_cat['Size'].value_counts()
         st.write("Chart for Company Size: unique =", (len(cat_num)))
@@ -262,6 +315,12 @@ def write():
         chart.set_yticklabels(chart.get_yticklabels())
         st.pyplot(bbox_inches="tight")
 
+        st.markdown(
+            ''' <p style='text-align: justify; '>It seems that mid-range and slightly larger mid-range companies dominate the space of Data Science job postings. 
+            I would've guessed that larger companies would be at the top of this bar chart since I'd assume they may have more data from various products/services/departments.
+            </p>''',
+            unsafe_allow_html=True)
+
         st.markdown('**Type of Ownership**')
         cat_num = df_cat['Type of ownership'].value_counts()
         st.write("Chart for Ownership Type: unique =", (len(cat_num)))
@@ -269,6 +328,13 @@ def write():
         chart = sns.barplot(y=cat_num.index, x=cat_num)
         chart.set_yticklabels(chart.get_yticklabels())
         st.pyplot(bbox_inches="tight")
+
+        st.markdown(
+            ''' <p style='text-align: justify; '>Again, unsurprisingly, private companies dominate the job listings. 
+            This seems to be a trend amongst all the charts as sites such as Glassdoor are generally used by private 
+            companies as opposed non-profits or government organizations.
+            </p>''',
+            unsafe_allow_html=True)
 
     elif option == 'Product Design':
 
@@ -295,6 +361,12 @@ def write():
         chart.set_yticklabels(chart.get_yticklabels())
         st.pyplot(bbox_inches="tight")
 
+        st.markdown(
+            ''' <p style='text-align: justify; '>The locations of Design jobs on Glassdoor are by far the most skewed out of all 3 job types 
+            with the overwhelming majority being located in California.
+            </p>''',
+            unsafe_allow_html=True)
+
         st.markdown('**Industry**')
         cat_num = df_cat['Industry'].value_counts()
         st.write("Chart for Industry: unique =", (len(cat_num)))
@@ -302,6 +374,12 @@ def write():
         chart = sns.barplot(y=cat_num.index, x=cat_num)
         chart.set_yticklabels(chart.get_yticklabels())
         st.pyplot(bbox_inches="tight")
+
+        st.markdown(
+            ''' <p style='text-align: justify; '>An interesting aspect of the Design data is that the number 1 industry listed is for Agriculture and Eningeering Services. 
+            This was particularly curious to me. After doing some research I found that these Design jobs are as civil, structural, and geotechnical design engineers.
+            </p>''',
+            unsafe_allow_html=True)
 
         st.markdown('**Sector**')
         cat_num = df_cat['Sector'].value_counts()
@@ -311,6 +389,12 @@ def write():
         chart.set_yticklabels(chart.get_yticklabels())
         st.pyplot(bbox_inches="tight")
 
+        st.markdown(
+            ''' <p style='text-align: justify; '>The IT space dominates as the main sector once again, being a combination of Computing and IT. 
+            A unique aspect of this bar chart is that Business Services are a much closer second for Design roles in comparison to Software Engineering or Data Science.
+            </p>''',
+            unsafe_allow_html=True)
+
         st.markdown('**Company Size**')
         cat_num = df_cat['Size'].value_counts()
         st.write("Chart for Company Size: unique =", (len(cat_num)))
@@ -319,6 +403,12 @@ def write():
         chart.set_yticklabels(chart.get_yticklabels())
         st.pyplot(bbox_inches="tight")
 
+        st.markdown(
+            ''' <p style='text-align: justify; '>Smaller mid-range to mid-range companies are the top ones listed as hiring, similar to the Software Engineering Data. 
+            Designers bring value to companies of all sizes.
+            </p>''',
+            unsafe_allow_html=True)
+
         st.markdown('**Type of Ownership**')
         cat_num = df_cat['Type of ownership'].value_counts()
         st.write("Chart for Ownership Type: unique =", (len(cat_num)))
@@ -326,3 +416,9 @@ def write():
         chart = sns.barplot(y=cat_num.index, x=cat_num)
         chart.set_yticklabels(chart.get_yticklabels())
         st.pyplot(bbox_inches="tight")
+
+        st.markdown(
+            ''' <p style='text-align: justify; '>Finally, there's no surprise here as the top companies hiring on Glassdoor are once again privately owned. 
+            There is however, a larger appearance of School/School Districts on this bar chart in comparison to the other 2 job types.
+            </p>''',
+            unsafe_allow_html=True)

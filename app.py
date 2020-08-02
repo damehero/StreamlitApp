@@ -24,10 +24,8 @@ def main():
         shared.components.write_page(page)
 
     st.sidebar.title("About")
-    st.sidebar.info("""
-        This app is maintained by Daman Heer. You can learn more about me at
-        [damehero.github.io](https://damehero.github.io).
-""")
+    st.sidebar.info('''This app is maintained by Daman Heer. You can learn more about me at
+        [damehero.github.io](https://damehero.github.io). ''')
 
 
 if __name__ == "__main__":

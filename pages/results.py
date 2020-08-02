@@ -19,7 +19,7 @@ def write():
         '''<p style='text-align: justify; '>Our formula for finding these 'ideal' locations was to identify cities that have a lower <b>Miscellaneous Cost Index</b> 
         than San Diego (our point of comparison) as well as have a higher <b>Average Salary</b>. <a href="https://www.bestplaces.net/">BestPlaces.net</a> defines Micellaneous Cost Index as "The cost index of those 
         goods and services not included in the other cost of living categories, including clothing, restaurants, repairs, entertainment, and other services." We decided that 
-        this was a good metric of measurement since it gages money leftover after essential living costs.</p>''',
+        this was a good metric of measurement since it gages money leftover after essential living costs (i.e. pocket money).</p>''',
         unsafe_allow_html=True)
 
     st.markdown('''Here's what the top cities with at least 5 Software Engineering job postings looked like:''')
@@ -44,7 +44,7 @@ unique_city''')
        'Waltham', 'Washington'], dtype=object)''')
 
     st.markdown(
-        '''After identifying these candidate cities, we proceeded to collect data on the miscellaneous cost indices for each of the 35 cities listed above from [BestPlaces.net](https://www.bestplaces.net/cost-of-living/)'''
+        '''After identifying these candidate cities, we proceeded to collect data on the Living Cost indices for each of the 35 cities listed above from [BestPlaces.net](https://www.bestplaces.net/cost-of-living/)'''
     )
 
     st.code('''living_cost = pd.read_csv('living_cost.csv')
@@ -97,25 +97,67 @@ winners = df_cost[(df_cost.get('AvgSal') > 82) & (df_cost.get('misc_index') < 10
     ''')
 
     df_geo = pd.read_csv('df_geo.csv')
-    # df_winners = df_geo.loc[df_geo['Location'] == 
-    #     'Blacksburg, VA', 'Cincinnati, OH', 'Peoria Heights, IL', 'Edmond, OK',
-    #     'Tempe, AZ', 'Tallahassee, FL', 'Cedar Park, TX', 'Greensboro, NC',
-    #     'Kansas City, MO', 'Salt Lake City, UT', 'Phoenix, AZ', 'Omaha, NE',
-    #     'Chubbuck, ID']
+    df_winners = df_geo[df_geo['Location'].isin([
+        'Blacksburg, VA', 'Cincinnati, OH', 'Peoria Heights, IL', 'Edmond, OK',
+        'Tempe, AZ', 'Tallahassee, FL', 'Cedar Park, TX', 'Greensboro, NC',
+        'Kansas City, MO', 'Salt Lake City, UT', 'Phoenix, AZ', 'Omaha, NE',
+        'Chubbuck, ID'
+    ])]
 
     bubble_map = folium.Map(location=[37, -102], zoom_start=4)
 
-    for i in range(len(df_geo)):
-        folium.Circle(location=[df_geo.Lat.iloc[i], df_geo.Lon.iloc[i]],
-                popup=df_geo.Location.iloc[i],
-                radius=int(df_geo.Count.iloc[i]) * 10000,
-                color='#7551f8',
-                fill=True,
-                fill_color='#7551f8').add_to(bubble_map)
+    for i in range(len(df_winners)):
+        folium.Circle(
+            location=[df_winners.Lat.iloc[i], df_winners.Lon.iloc[i]],
+            popup=df_winners.Location.iloc[i],
+            radius=100000,
+            color='#7DD7A7',
+            fill=True,
+            fill_color='#7DD7A7').add_to(bubble_map)
     st.markdown(bubble_map._repr_html_(), unsafe_allow_html=True)  # Allows Folium map to be displayed
 
+    st.markdown('')
+    st.markdown(
+        '''<p style='text-align: justify; '>This Bubble Map shows the 'ideal' locations overlayed ontop of the previous map which showed job posting frequency. 
+        Each green dot represents a city which satisfies all 3 conditions:
+        <ol>
+  <li>Average Salary Estimae Greater than $82k (San Diego's Average Salary Estimate for Software Engineers)</li>
+  <li>Miscellaneous Cost Index Less than 104 (San Diego's Miscellaneous Cost Index)</li>
+  <li>At least 5 Postings (The number of job listings in San Diego)</li>
+</ol></p>''',
+        unsafe_allow_html=True)
 
-    st.dataframe(df_geo)
+    st.header('Conclusion & Discussion')
+    st.markdown(
+        '''<p style='text-align: justify; '>After web-scraping Glassdoor and plotting our data visualizations, we took a look at the cities that 
+        had more job listings, lower miscellaneous index, and higher average salary than San Diego, and found best cities to live in as a Software Engineer 
+        currently residing in San Diego but hoping to relocate are:</p>''',
+        unsafe_allow_html=True)
+
+    st.image(Image.open('images/cities.png'),
+             caption="'Winning Locations' for Software Engineers",
+             use_column_width=True)
+
+        
+    st.markdown('''<p style='text-align: justify; '>We were most surprised that we did not see any cities in the California Bay Area on this list, due to their higher miscellaneous cost index. 
+This means that although the region in Silicon Valley offers a higher salary and more job postings compared to San Diego, it still is not the “perfect” place to live because people 
+have less to spend on miscellaneous, non-essential costs like entertainment, restaurants, and clothing. By looking at miscellaneous cost index, we were able to see that typical tech-job 
+alluring cities like San Francisco, Los Angeles, New York were not always the best places to live. Some limitations that we saw in our project included the amount of Glassdoor entries we 
+were able to scrape and salary estimates instead of exact salary amounts.</p>''',
+        unsafe_allow_html=True)
+
+
+    st.markdown(
+        '''<p style='text-align: justify; '>Revisiting our hypothesis, we were able to successfully predict that the best cities for Computer Science related careers/majors will be the 
+        cities with the most job listings, lowest miscellaneous/non-essential costs, and highest average salary (all relative to San Diego). However, our previous assumption about expecting 
+        to only see cities near Northern California as the best cities to live in turned out to be proved wrong, as we see in the above list that none of those cities are located there.</p>''',
+        unsafe_allow_html=True)
+
+    st.markdown(
+        '''<p style='text-align: justify; '>This analysis would be very resourceful for those individuals who are on a job search especially after being affected by the COVID-19 pandemic. 
+        Our algorithm helps job seekers, primarily, fresh graduates of Computer Science related degrees to identify the most optimal location to work at, focusing on their income and job status.</p>''',
+        unsafe_allow_html=True)
+
 
     st.info(
         ''' by: [Daman Heer](https://damehero.github.io/) | source: [GitHub](https://github.com/damehero/StreamlitApp) '''
