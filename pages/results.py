@@ -1,4 +1,5 @@
 import streamlit as st
+from streamlit_folium import folium_static
 from PIL import Image
 import altair as alt
 import pandas as pd
@@ -114,7 +115,7 @@ winners = df_cost[(df_cost.get('AvgSal') > 82) & (df_cost.get('misc_index') < 10
             color='#7DD7A7',
             fill=True,
             fill_color='#7DD7A7').add_to(bubble_map)
-    st.markdown(bubble_map._repr_html_(), unsafe_allow_html=True)  # Allows Folium map to be displayed
+    folium_static(bubble_map)
 
     st.markdown('')
     st.markdown(
@@ -138,7 +139,7 @@ winners = df_cost[(df_cost.get('AvgSal') > 82) & (df_cost.get('misc_index') < 10
              caption="'Winning Locations' for Software Engineers",
              use_column_width=True)
 
-        
+
     st.markdown('''<p style='text-align: justify; '>We were most surprised that we did not see any cities in the California Bay Area on this list, due to their higher miscellaneous cost index. 
 This means that although the region in Silicon Valley offers a higher salary and more job postings compared to San Diego, it still is not the “perfect” place to live because people 
 have less to spend on miscellaneous, non-essential costs like entertainment, restaurants, and clothing. By looking at miscellaneous cost index, we were able to see that typical tech-job 

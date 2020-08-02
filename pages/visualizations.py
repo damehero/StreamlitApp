@@ -1,4 +1,5 @@
 import streamlit as st
+from streamlit_folium import folium_static
 import pandas as pd
 import numpy as np
 import seaborn as sns
@@ -29,6 +30,7 @@ def write():
 
 
     if 'Software Engineering' in options and 'Data Science' not in options and 'Product Design' not in options: #SWE only
+        bubble_map = folium.Map(location=[37, -102], zoom_start=4)
         for i in range(len(df_geo)):
             folium.Circle(location=[df_geo.Lat.iloc[i], df_geo.Lon.iloc[i]],
                       popup=df_geo.Location.iloc[i],
@@ -36,10 +38,10 @@ def write():
                       color='#7551f8',
                       fill=True,
                       fill_color='#7551f8').add_to(bubble_map)
-        st.markdown(bubble_map._repr_html_(),
-                unsafe_allow_html=True)  # Allows Folium map to be displayed
+        folium_static(bubble_map)
 
     elif 'Data Science' in options and 'Software Engineering' not in options and 'Product Design' not in options: #DS only
+        bubble_map = folium.Map(location=[37, -102], zoom_start=4)
         for i in range(len(data_geo)):
             folium.Circle(location = [data_geo.Lat.iloc[i], data_geo.Lon.iloc[i]],
                         popup = data_geo.Location.iloc[i],
@@ -47,9 +49,10 @@ def write():
                         color ='#28CF17',
                         fill = True,
                         fill_color = '#28CF17').add_to(bubble_map)
-        st.markdown(bubble_map._repr_html_(), unsafe_allow_html=True)
+        folium_static(bubble_map)
 
     elif 'Product Design' in options and 'Software Engineering' not in options and 'Data Science' not in options: #DSGN only
+        bubble_map = folium.Map(location=[37, -102], zoom_start=4)
         for i in range(len(dsgn_geo)):
             folium.Circle(location = [dsgn_geo.Lat.iloc[i], dsgn_geo.Lon.iloc[i]],
                     popup = dsgn_geo.Location.iloc[i],
@@ -57,10 +60,11 @@ def write():
                     color ='#F85151',
                     fill = True,
                     fill_color = '#F85151').add_to(bubble_map)
-        st.markdown(bubble_map._repr_html_(),
-            unsafe_allow_html=True)  # Allows Folium map to be displayed
+        folium_static(bubble_map)
+
 
     elif 'Software Engineering' in options and 'Product Design' in options and 'Data Science' not in options:  #SWE & DSGN
+        bubble_map = folium.Map(location=[37, -102], zoom_start=4)
         for i in range(len(df_geo)):
             folium.Circle(location=[df_geo.Lat.iloc[i], df_geo.Lon.iloc[i]],
                         popup=df_geo.Location.iloc[i],
@@ -76,10 +80,11 @@ def write():
                     color='#F85151',
                     fill=True,
                     fill_color='#F85151').add_to(bubble_map)
-        st.markdown(bubble_map._repr_html_(),
-                unsafe_allow_html=True)
+        folium_static(bubble_map)
+
 
     elif 'Software Engineering' in options and 'Data Science' in options and 'Product Design' not in options: #SWE & DATA
+        bubble_map = folium.Map(location=[37, -102], zoom_start=4)
         for i in range(len(df_geo)):
             folium.Circle(location=[df_geo.Lat.iloc[i], df_geo.Lon.iloc[i]],
                           popup=df_geo.Location.iloc[i],
@@ -95,9 +100,11 @@ def write():
                         color='#28CF17',
                         fill=True,
                         fill_color='#28CF17').add_to(bubble_map)
-        st.markdown(bubble_map._repr_html_(), unsafe_allow_html=True)
+        folium_static(bubble_map)
+
 
     elif 'Data Science' in options and 'Product Design' in options and 'Software Engineering' not in options: #DATA & DSGN
+        bubble_map = folium.Map(location=[37, -102], zoom_start=4)
         for i in range(len(data_geo)):
             folium.Circle(location=[data_geo.Lat.iloc[i], data_geo.Lon.iloc[i]],
                 popup=data_geo.Location.iloc[i],
@@ -113,9 +120,10 @@ def write():
                 color='#F85151',
                 fill=True,
                 fill_color='#F85151').add_to(bubble_map)
-        st.markdown(bubble_map._repr_html_(), unsafe_allow_html=True)
+        folium_static(bubble_map)
 
     elif 'Software Engineering' in options and 'Data Science' in options and 'Product Design' in options:  #SWE & DATA & DSGN
+        bubble_map = folium.Map(location=[37, -102], zoom_start=4)
         for i in range(len(df_geo)):
             folium.Circle(location=[df_geo.Lat.iloc[i], df_geo.Lon.iloc[i]],
                           popup=df_geo.Location.iloc[i],
@@ -141,11 +149,13 @@ def write():
                 color='#F85151',
                 fill=True,
                 fill_color='#F85151').add_to(bubble_map)
-        st.markdown(bubble_map._repr_html_(), unsafe_allow_html=True)
+        folium_static(bubble_map)
+
 
     else:
-        st.markdown(bubble_map._repr_html_(),
-        unsafe_allow_html=True)
+        bubble_map = folium.Map(location=[37, -102], zoom_start=4)
+        folium_static(bubble_map)
+        
 
     st.write('')
     st.write(

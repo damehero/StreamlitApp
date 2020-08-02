@@ -1,4 +1,5 @@
 import streamlit as st
+from streamlit_folium import folium_static
 from PIL import Image
 import altair as alt
 import pandas as pd
@@ -240,8 +241,9 @@ df_geo = df_geo.drop_duplicates(['City'], keep='first').drop(['City'], axis=1)
             fill_color='#7551f8').add_to(bubble_map)''')
 
     st.markdown('**Bubble Map of Jobs based on Posting Density**')
-    st.markdown(bubble_map._repr_html_(),
-                unsafe_allow_html=True)  # Allows Folium map to be displayed
+
+    folium_static(bubble_map)
+
     st.markdown('')
     st.markdown('''<p style='text-align: justify; '>
     This Bubble Map of the United States plots each job listing's location 
@@ -251,5 +253,3 @@ df_geo = df_geo.drop_duplicates(['City'], keep='first').drop(['City'], axis=1)
     of multiple circles in the Bay Area and East coast reflect a high volume of postings and 
     signify these areas as "Tech Hubs."</p>''',
     unsafe_allow_html=True)
-
-    
