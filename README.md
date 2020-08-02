@@ -67,7 +67,9 @@ The Random Forest model was the best suited approach for the test and validation
 ## Productionization 
 In this step, I built a Streamlit web app to display the notebook with data visualizations, the salary predictor, and the results of the project. You can view it [here](https://stem-career-project.herokuapp.com/). If it goes down for whatever reason, here is what the interface looked like:
 
-(/home.png)
+![home](/images/home.png)
+![maps](/images/maps.png)
+![predictor](/images/predictor.png)
 
 
 
